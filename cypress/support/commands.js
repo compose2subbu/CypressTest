@@ -22,4 +22,23 @@
 //
 //
 // -- This will overwrite an existing command --
+
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('getLowerCourses',(thresholdAmount) => {
+    let courses = ""
+    cy.get('table#product').eq(0).get('tbody').eq(0).children().get('tr').each(($e1, index, $list) => {
+        
+        if(!(index === 0)){
+            cy.wrap($e1).children().eq(-1).then((courseAmount) => {
+                const amt = courseAmount.text()
+                console.log(amt)
+                if(Number(thresholdAmount) > Number(amt)){
+                    cy.wrap($e1).children().eq(1).then((courseName)=>{
+                        const courseText = courseName.text()
+                        console.log(courseText)
+                        courses = courses+','+courseText
+                    })
+                }
+            })
+    }})
+})
