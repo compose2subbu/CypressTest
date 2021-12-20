@@ -1,0 +1,15 @@
+{
+  "name": "cytest",
+  "version": "1.0.0",
+  "description": "My first cypress test project",
+  "main": "index.js",
+  "scripts": {
+    "opentest": "node_modules\\.bin\\cypress open",
+    "test": "node_modules\\.bin\\cypress run"
+  },
+  "author": "Subramanian",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.1.1"
+  }
+}
